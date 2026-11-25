@@ -1,0 +1,29 @@
+{
+  "service": "internal-systems-gateway",
+  "description": "Internal access gateway for autonomous agents (personal project).",
+  "endpoints": [
+    {
+      "name": "mcp",
+      "method": "POST",
+      "url": "https://mcp-gateway.co.uk/mcp",
+      "content_type": "application/json",
+      "auth": {
+        "scheme": "Bearer",
+        "header": "Authorization: Bearer <redacted>",
+        "note": "Token is issued by the gateway operator; store it in .env (see .env.example). Local dev placeholder: mgw-local-dev-key-0001 (self-issued, only valid against this personal gateway)."
+      },
+      "rpc": {
+        "version": "2.0",
+        "examples": [
+          {"method": "initialize", "params": {}},
+          {"method": "tools/list", "params": {}},
+          {"method": "tools/call", "params": {"name": "echo", "arguments": {"text": "hello"}}}
+        ]
+      }
+    }
+  ],
+  "limits": {
+    "max_body_bytes": 65536,
+    "requests_per_minute": 60
+  }
+}

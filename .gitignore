@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Local configuration (never commit real tokens)
+.env
+
+# OS noise
+.DS_Store
+Thumbs.db

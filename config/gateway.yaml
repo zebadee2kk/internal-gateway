@@ -1,0 +1,24 @@
+# Internal gateway configuration (YAML schema)
+# Copy the shape of this file into your own deployment config.
+
+gateway:
+  # Public endpoint agents POST JSON-RPC messages to.
+  url: "https://mcp-gateway.co.uk/mcp"
+  protocol: "mcp/1.0"
+  transport: "http-jsonrpc"
+
+auth:
+  # Bearer token auth. The token itself lives in the environment
+  # (see .env.example), never in this file.
+  scheme: "Bearer"
+  token_env_var: "GATEWAY_BEARER_TOKEN"
+
+limits:
+  max_body_bytes: 65536
+  request_timeout_seconds: 30
+  requests_per_minute: 60
+
+logging:
+  # Requests are recorded locally for debugging.
+  log_requests: true
+  log_level: "info"
